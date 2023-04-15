@@ -9,14 +9,36 @@
     $: {
         if (tooltipContainer) {
             // Calculate the available space on the right side of the cursor
-            const availableSpace = window.innerWidth - x;
+            const availableSpaceRight = window.innerWidth - x;
+
+            // Calculate the available space on the left side of the cursor
+            const availableSpaceLeft = x;
+
 
             // Calculate the maximum width for the tooltip based on the available space
-            const maxWidth = availableSpace - 20; // Subtract 20px for padding
+            const maxWidth = availableSpaceRight - 20; // Subtract 20px for padding
+
+            // Calculate the width of the tooltipContainer
+            const tooltipWidth = maxWidth + 20;
+
+            // Calculate the required offset based on available space on the left
+            // TODO: fix this
+            let offsetX = 0;
+            if (availableSpaceLeft < tooltipWidth / 2) {
+                offsetX = 50 + tooltipWidth/4; // Positive offset if not enough space on the left
+            } else if (availableSpaceRight < tooltipWidth/2) {
+                offsetX = -50 - tooltipWidth/4; // Negative offset if not enough space on the right
+            }
+
+            console.log('offsetX', offsetX);
+            console.log('availableSpaceLeft', availableSpaceLeft);
+            console.log('tooltipWidth', tooltipWidth);
 
             // Apply the calculated max-width and position to the tooltip container
             tooltipContainer.style.maxWidth = `${maxWidth}px`;
-            tooltipContainer.style.left = `${x + 50}px`;
+
+            // Update the left position of the tooltipContainer based on the offsetX
+            tooltipContainer.style.left = `${x + offsetX}px`;
             tooltipContainer.style.top = `${y + 50}px`;
             tooltipContainer.style.display = visible ? "block" : "none";
         }
@@ -27,7 +49,7 @@
 <div
     bind:this={tooltipContainer}
     class="tooltip-container fixed bg-white text-gray-700 rounded shadow-lg p-5 z-10 border-2 border-black"
-    style="background-color: {color};  left: {x}px; top: {y}px; display: {visible
+    style="background-color: {color};  top: {y}px; display: {visible
         ? 'block'
         : 'none'};"
 >

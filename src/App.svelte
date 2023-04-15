@@ -284,7 +284,7 @@
             >
                 <img alt='fritatta!' src="xra.svg" />
             </div>
-            <span class="ml-2 text-blue-500">Loading...</span>
+            <span class="ml-2 text-blue-500">Pondering cosmic implications...</span>
         </div>
     {/if}
     <!-- Add a div to display the processed text content -->
