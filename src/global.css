@@ -35,3 +35,14 @@
 .text-white {
   color: var(--text);
 }
+
+    /* Define the dark mode styles */
+    .dark {
+        background-color: #1a202c; /* Dark background */
+        color: #f7fafc; /* Light text color */
+    }
+    
+    /* Optionally, define other dark mode styles for specific elements */
+    .dark .bg-white {
+        background-color: #2d3748; /* Darker background for containers */
+    }
