@@ -243,7 +243,7 @@
 <!-- Import tailwind css -->
 <link rel="stylesheet" href="./global.css" />
 <!-- Add a container to keep the content centered -->
-<div class="container mx-auto px-4 py-8">
+<div class="container mx-auto px-4 py-8 mb-80">
     <!-- Add a button to toggle dark mode -->
     <button
         on:click={toggleDarkMode}
@@ -255,7 +255,7 @@
     <h1 class="text-4xl text-center text-primary font-bold mb-6">Frittata!</h1>
     <!-- Brief description of the web app -->
     <p class="text-center text-gray-500 mb-6">
-        Translate boring to Xavier-speak!
+        Highlight some text to translate anything to Xavier-speak
     </p>
     <!-- Add form to get input from the user -->
     <form on:submit|preventDefault={handleSubmit}>
@@ -312,7 +312,7 @@
                             style="
                             background-color: {getHighlightColor(
                                 index
-                            )}; padding: 2px 4px; border-radius: 4px; cursor: pointer;"
+                            )}; padding: 2px 0px; border-radius: 4px; cursor: pointer;"
                         >
                             <span class="highlight">
                                 {segment.text}
